@@ -9,7 +9,7 @@
 
 dir=$(dirname "$(readlink -f "$0")")                 # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".i3blocks.conf .config/i3 .config/compton.conf .config/neofetch .config/ranger/rc.conf"    # list of files/folders to symlink in homedir
+files=".bashrc .i3blocks.conf .Xresources .config/i3 .config/compton.conf .config/neofetch .config/ranger/rc.conf .config/ranger/commands.py" # list of files/folders to symlink in homedir
 
 ##########
 

@@ -9,10 +9,11 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id compton -cCGb --backend glx --vsync opengl
-exec --no-startup-id dropboxd
-exec --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/3746392026_55d0933bec_o.jpg
-exec --no-startup-id numlockx
+exec --no-startup-id xrandr --output $(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/") --primary&
+exec --no-startup-id compton -cCGb --backend xrender --vsync opengl&
+exec --no-startup-id dropboxd&
+exec --no-startup-id feh --bg-scale ~/.config/i3/bg.jpg&
+exec --no-startup-id numlockx&
 
 set $mod Mod4
 
@@ -47,8 +48,8 @@ bindsym $mod+Shift+q kill
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -lines 10 -eh 2 -width 100 -padding 320 -opacity 85 -bw 0 -bc "#000000" -bg "#000000" -fg "#dddddd" -hlbg "#333333" -hlfg "#ffffff"'
-
+# launch rofi launcher instead of dmenu
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -show run -lines 10 -eh 2 -width 100 -padding 320 -opacity 85 -bw 0 -bc "#000000" -bg "#000000" -fg "#dddddd" -hlbg "#333333" -hlfg "#ffffff"'
 
 # change focus
 bindsym $mod+j focus left
@@ -129,9 +130,9 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # lock i3
-bindsym $mod+z exec "~/.config/i3/scripts/lock -s -p"
+bindsym $mod+z exec --no-startup-id  "~/.config/i3/scripts/lock -s -p"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -164,10 +165,12 @@ bindsym $mod+r mode "resize"
 bar {
     height 20
 	tray_output primary
+	tray_padding 3px
 	position top
 	font pango:Convergence FontAwesome, Icons 9
 	status_command i3blocks
 	colors {
+
 #       setting			outline	bg	text
 
         statusline		#999999
@@ -186,9 +189,9 @@ client.focused_inactive			#315858 #315858 #cccccc
 client.urgent				#383a3b #383a3b #cccccc
 
 # change volume or toggle mute
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -D pulse sset Master 5%- && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id amixer -q -D pulse sset Master toggle && pkill -RTMIN+10 i3blocks
 
 # gaps
 gaps inner 10
@@ -200,7 +203,10 @@ smart_borders on
 smart_borders no_gaps
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+# Screen Brightness contols
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness

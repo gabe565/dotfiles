@@ -1,3 +1,3 @@
 # dotfiles
-My personal i3 dotfile setup
+My personal i3 (and much more) dotfile setup
 # dotfiles
