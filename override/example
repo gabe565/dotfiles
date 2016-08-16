@@ -1,0 +1,7 @@
+local method=
+local location=
+local string=
+
+method[0]=""    # one of: before, after, replace, append
+location[0]=""  # regex for what to match
+string[0]=""    # string to be added
