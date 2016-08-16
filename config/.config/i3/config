@@ -9,10 +9,9 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id compton -cCGb --backend xrender --vsync opengl&
-exec --no-startup-id dropboxd&
-exec --no-startup-id feh --bg-scale ~/.config/i3/bg.jpg&
-exec --no-startup-id xrandr --output $(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/") --primary&
+exec --no-startup-id compton -cCGb --backend xrender --vsync opengl
+exec --no-startup-id dropboxd
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/bg.png
 
 set $mod Mod4
 
@@ -212,3 +211,5 @@ bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 # Screen Brightness contols
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
 bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+
+exec --no-startup-id xrandr --output $(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/") --primary
