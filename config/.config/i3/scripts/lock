@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+icon="$HOME/.config/i3/lock_ic.png"
+tmpbg=$(mktemp --suffix=".png")
+
+scrot "$tmpbg"
+convert \( "$tmpbg" -scale 10% -scale 1000% -fill black -colorize 30% \) \
+    "$icon" -gravity center -composite "$tmpbg"
+i3lock -u -i "$tmpbg"
+rm $tmpbg

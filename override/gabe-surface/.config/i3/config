@@ -1,0 +1,11 @@
+local method=
+local location=
+local string=
+
+method[0]="replace"
+location[0]="height 20"
+string[0]="height 40"
+
+method[1]="append"
+location[1]=""
+string[1]="exec --no-startup-id xrandr --dpi 200"

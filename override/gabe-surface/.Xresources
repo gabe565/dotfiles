@@ -1,0 +1,7 @@
+local method=
+local location=
+local string=
+
+method[0]="replace"
+location[0]="RobotoCondensed 13"
+string[0]="RobotoCondensed 25"
