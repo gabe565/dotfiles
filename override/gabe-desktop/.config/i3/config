@@ -1,0 +1,12 @@
+local method=
+local location=
+local string=
+
+method[0]="replace"
+location[0]="height 20"
+string[0]="height 25"
+
+method[1]="replace"
+location[1]="Icons 10"
+string[1]="Icons 11"
+

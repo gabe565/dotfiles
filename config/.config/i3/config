@@ -12,6 +12,7 @@
 exec --no-startup-id compton -cCGb --backend xrender --vsync opengl
 exec --no-startup-id dropboxd
 exec_always --no-startup-id feh --bg-scale ~/.config/i3/bg.png
+exec --no-startup-id pulseaudio -D
 
 set $mod Mod4
 

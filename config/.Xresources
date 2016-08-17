@@ -35,7 +35,7 @@
 *color7:  #a89984
 *color15: #ebdbb2
 
-URxvt.font: xft:Input:size=11
+URxvt.font: xft:Input:size=12
 URxvt.letterSpace: -1
 URxvt*scrollBar: false
 URxvt.cursorBlink: true
