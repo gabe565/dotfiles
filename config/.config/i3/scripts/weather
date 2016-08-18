@@ -1,14 +1,56 @@
-#!/bin/sh
-#AccuWeather (r) RSS weather tool for conky
-#
-#USAGE: weather.sh UKXX0062
-#
-#(c) Michael Seiler 2007
+#!/bin/bash
+
 METRIC=1 #Should be 0 or 1; 0 for F, 1 for C
+
+color="#3d80ff"
+
+containsElement () {
+  local e
+  for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+  return 1
+}
+
+sunny=("Sunny" "Mostly Sunny" "Partly Sunny" "Intermittent Clouds" "Hazy Sunshine" "Hot")
+cloudy=("Cloudy" "Mostly Cloudy" "Dreary (Overcast)" "Fog")
+rainy=("Showers" "Mostly Cloudy w/ Showers" "Partly Sunny w/ Showers" "T-Storms" "Mostly Cloudy w/ T-Storms" "Partly Sunny w/ T-Storms" "Rain")
+windy=("Windy")
+cold=("Flurries" "Mostly Cloudy w/ Flurries" "Partly Sunny w/ Flurries" "Snow" "Mostly Cloudy w/ Snow" "Ice" "Sleet" "Freezing Rain" "Rain and Snow" "Cold")
+
+echoIcon() {
+    echo -n "<span color='$color'>"
+    #sunny
+    if containsElement "$1" "${sunny[@]}"; then
+        echo -n ""
+    #cloudy
+    elif containsElement "$1" "${cloudy[@]}"; then
+        echo -n ""
+    #rainy
+    elif containsElement "$1" "${rainy[@]}"; then
+        echo -n ""
+    #windy
+    elif containsElement "$1" "${windy[@]}"; then
+        echo -n ""
+    #cold
+    elif containsElement "$1" "${cold[@]}"; then
+        echo -n ""
+    fi
+    echo -n "</span>"
+}
+
 if [ -z $1 ]; then
-echo
-echo "USAGE: weather.sh <locationcode>"
-echo
-exit 0;
+    echo "USAGE: weather.sh <locationcode>"
+    exit 0;
 fi
-curl -s http://rss.accuweather.com/rss/liveweather_rss.asp\?metric\=${Imperial}\&locCode\=$1 | perl -ne 'if (/Currently/) {chomp;/\<title\>Currently: (.*)?\<\/title\>/; print "$1"; }'
+
+full=$(curl -s http://rss.accuweather.com/rss/liveweather_rss.asp\?metric\=${Imperial}\&locCode\=$1)
+cond=$(echo "$full" | awk -F ":" '/<title>Currently/ {print substr($2, 2, length($2))}')
+temp=$(echo "$full" | awk -F ":" '/<title>Currently/ {print substr($3, 2, length($3)-11)}')
+
+#symbol=""
+#if [ "$cond" == "Cloudy" ] || [ "$cond" == "Mostly Cloudy" ] || ["$cond" == "Dreary (Overcast)" ] || ["$cond" == "Fog" ]; then
+#    symbol=""
+#elif [ "$cond" == "Showers" ] || [ "$cond" == "Mostly Cloudy w/ Showers" ] || [ "$cond" == "Partly Sunny w/ Showers" ] || [ "$cond"
+#fi
+
+echoIcon "$cond"
+echo -n " $cond $temp"
