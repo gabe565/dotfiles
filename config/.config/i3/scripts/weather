@@ -10,7 +10,7 @@ containsElement () {
   return 1
 }
 
-sunny=("Sunny" "Mostly Sunny" "Partly Sunny" "Intermittent Clouds" "Hazy Sunshine" "Hot")
+sunny=("Sunny" "Mostly Sunny" "Partly Sunny" "Intermittent Clouds" "Hazy Sunshine" "Hot" "Clear")
 cloudy=("Cloudy" "Mostly Cloudy" "Dreary (Overcast)" "Fog")
 rainy=("Showers" "Mostly Cloudy w/ Showers" "Partly Sunny w/ Showers" "T-Storms" "Mostly Cloudy w/ T-Storms" "Partly Sunny w/ T-Storms" "Rain")
 windy=("Windy")
