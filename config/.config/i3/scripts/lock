@@ -1,10 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
+TMPBG=$(mktemp --suffix=".png")
+LOCK=$HOME/.config/i3/lock_ic.png
+RES=$(xrandr | grep '*' | sed -E "s/[^0-9]*([0-9]+)x([0-9]+).*/\1*\2/")
 
-icon="$HOME/.config/i3/lock_ic.png"
-tmpbg=$(mktemp --suffix=".png")
-
-scrot "$tmpbg"
-convert \( "$tmpbg" -scale 10% -scale 1000% -fill black -colorize 30% \) \
-    "$icon" -gravity center -composite "$tmpbg"
-i3lock -u -i "$tmpbg"
-rm $tmpbg
+ffmpeg -f x11grab -video_size $RES -y -i $DISPLAY -i $LOCK -filter_complex "boxblur=6:1,overlay=(main_w-overlay_w)/2:(main_h-overlay_h)/2" -vframes 1 $TMPBG -loglevel quiet
+i3lock -i $TMPBG
+rm $TMPBG

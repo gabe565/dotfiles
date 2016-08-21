@@ -3,8 +3,12 @@ local location=
 local string=
 
 method[0]="replace"
-location[0]="height 20"
+location[0]="height 25"
 string[0]="height 40"
+
+method[0]="replace"
+location[0]="Icons 11"
+string[0]="Icons 10"
 
 method[1]="append"
 location[1]=""
