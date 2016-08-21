@@ -17,7 +17,7 @@ My personal dotfile setup
 
 ##Setup
 ####General Files
-the buildscript will automatically copy all of the files in the `config/` directory to your home
+the buildscript will automatically copy all of the files in the `config/` directory to `~/...`
 ####Overrides
-If there is no matching override for a given file under `ovveride/$HOSTNAME`, the file will just be copied out.
+If there is no matching override for a given file under `override/$HOSTNAME`, the file will just be copied out.
 Otherwise, the override will be inserted, replaced, or appended (whatever command you tell it to use) to the config file.
