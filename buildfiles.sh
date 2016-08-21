@@ -12,6 +12,7 @@ echo "Changing directory to $dir"
 cd $dir
 files=$(find config/ -type f)            # list of files to deal with 
 hostname=$(hostname)
+IFS=$'\n'
 
 function build() {
     relative=$1
@@ -22,7 +23,7 @@ function build() {
     fi
 
     if [ -n "$location" ]; then
-        echo "Overrode File: $relative -> ~/$file"
+        echo "Overrode File: ~/$file"
         tmp=$(mktemp)
         cp -f $relative $tmp
         for i in "${!method[@]}"; do
@@ -36,12 +37,12 @@ function build() {
                 echo "${string[$i]}" >> $tmp
             fi
         done
-	cp $tmp ~/$file
-        rm $tmp
+	cp "$tmp" "~/$file"
+        rm "$tmp"
     else
-        echo "Copied File: $relative -> ~/$file"
-        mkdir -p $(dirname ~/$file)
-        cp "$relative" ~/$file
+        echo "Copied File: ~/$file"
+        mkdir -p $(dirname "~/$file")
+        cp "$relative" "~/$file"
     fi
 }
 
