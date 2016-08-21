@@ -1,0 +1,7 @@
+local method=
+local location=
+local string=
+
+method[0]="replace"
+location[0]="letterSpace: -2"
+string[0]="letterSpace: -1"

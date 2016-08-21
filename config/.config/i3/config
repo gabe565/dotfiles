@@ -10,10 +10,11 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 exec --no-startup-id compton -cCGb
-exec --no-startup-id dropboxd
-exec_always --no-startup-id feh --bg-scale ~/Sync/Pictures/Wallpapers/current
 exec --no-startup-id pulseaudio -D
 exec --no-startup-id udiskie -ANsq
+exec_always --no-startup-id feh --bg-scale ~/Sync/Pictures/Wallpapers/current
+
+exec --no-startup-id dropboxd
 
 set $mod Mod4
 

@@ -9,23 +9,23 @@
 
 dir=$(dirname "$(readlink -f "$0")")        # dotfiles directory
 echo "Changing directory to $dir"
-cd $dir
+cd "$dir"
 files=$(find config/ -type f)            # list of files to deal with 
-hostname=$(hostname)
+hostname="$HOSTNAME"
 IFS=$'\n'
 
-function build() {
+function buildFile() {
     relative=$1
     file=${relative#config/}
 
     if [[ -e "./override/$hostname/$file" ]]; then
-        . ./override/$hostname/$file
+        . "./override/$hostname/$file"
     fi
 
     if [ -n "$location" ]; then
         echo "Overrode File: ~/$file"
         tmp=$(mktemp)
-        cp -f $relative $tmp
+        cp -f "$relative" "$tmp"
         for i in "${!method[@]}"; do
             if [ "${method[$i]}" == "before" ]; then
                 gawk -i inplace -v loc="${location[$i]}"  -v ins="${string[$i]}" '$0 ~ loc {print ins}1' "$tmp"
@@ -37,17 +37,18 @@ function build() {
                 echo "${string[$i]}" >> $tmp
             fi
         done
-	cp "$tmp" "~/$file"
+        mkdir -p $(dirname "$HOME/file")
+	cp "$tmp" ~/"$file"
         rm "$tmp"
     else
         echo "Copied File: ~/$file"
-        mkdir -p $(dirname "~/$file")
-        cp "$relative" "~/$file"
+        mkdir -p $(dirname "$HOME/$file")
+        cp "$relative" "$HOME/$file"
     fi
 }
 
 for file_full in $files; do
-    build "$file_full"
+    buildFile "$file_full"
 done
 
 
