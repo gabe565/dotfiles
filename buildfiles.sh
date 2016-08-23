@@ -56,9 +56,11 @@ prompt="
 Reload configs? [y/N] "
 read $reload -n 1 -p "$prompt" reload
 if [ "$reload" == y ] || [ "$reload" == Y ]; then
+    fc-cache -f&
     xrdb merge ~/.Xresources
     i3-msg restart
     pkill -USR1 compton
+    pkill dunst
     echo "...done"
 else
     printf "\n"

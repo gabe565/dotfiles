@@ -12,6 +12,7 @@
 exec --no-startup-id compton -cCGb
 exec --no-startup-id pulseaudio -D
 exec --no-startup-id udiskie -ANsq
+exec --no-startup-id dunst
 exec_always --no-startup-id feh --bg-scale ~/Sync/Pictures/Wallpapers/current
 
 exec --no-startup-id dropboxd
@@ -37,7 +38,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec terminator
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -212,7 +213,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Screen Brightness contols
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/backlight "+5"
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/backlight "-5"
 
 exec --no-startup-id xrandr --output $(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/") --primary

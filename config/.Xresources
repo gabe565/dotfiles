@@ -39,7 +39,10 @@ URxvt*font: xft:Roboto Mono:size=13,xft:Inconsolata for Powerline:size=13
 URxvt*letterSpace: -2
 URxvt*scrollBar: false
 URxvt*cursorBlink: true
-URxvt*scrollTtyOutput:  true
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+!URxvt*fading: 50
 
 rofi.eh: 2
 rofi.width: 100
