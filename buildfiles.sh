@@ -61,6 +61,7 @@ if [ "$reload" == y ] || [ "$reload" == Y ]; then
     i3-msg restart
     pkill -USR1 compton
     pkill dunst
+    ranger --copy-config=all &> /dev/null
     echo "...done"
 else
     printf "\n"
