@@ -42,7 +42,8 @@ URxvt*cursorBlink: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
-!URxvt*fading: 50
+URxvt*secondaryScroll: false
+URxvt*secondaryWheel: true
 
 rofi.eh: 2
 rofi.width: 100
