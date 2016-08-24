@@ -13,7 +13,7 @@ My personal dotfile setup
  * [ranger](https://github.com/ranger/ranger)
  * [rofi](https://github.com/DaveDavenport/rofi)
  * Roboto Mono
- * Terminator
+ * urxvt
  * [vim-airline](https://github.com/vim-airline/vim-airline)
 
 ##Setup
