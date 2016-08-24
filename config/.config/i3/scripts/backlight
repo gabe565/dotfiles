@@ -1,6 +1,6 @@
 #!/bin/bash
 
 light $1
-backlight_msg="Backlight: $(printf "%.0f" $(light | bc))"
+backlight_msg=" Backlight: $(printf "%.0f" $(light | bc))%"
 dunstify -p "$backlight_msg" -r 50 &
 
