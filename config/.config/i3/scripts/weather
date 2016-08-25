@@ -12,7 +12,7 @@ containsElement () {
 
 sunny=("Sunny" "Mostly Sunny" "Partly Sunny" "Intermittent Clouds" "Hazy Sunshine" "Hot" "Clear")
 cloudy=("Cloudy" "Mostly Cloudy" "Dreary (Overcast)" "Fog")
-rainy=("Showers" "Mostly Cloudy w/ Showers" "Partly Sunny w/ Showers" "T-Storms" "Mostly Cloudy w/ T-Storms" "Partly Sunny w/ T-Storms" "Rain")
+rainy=("Showers" "Mostly Cloudy w/ Showers" "Partly Sunny w/ Showers" "T-Storms" "Mostly Cloudy w/ T-Storms" "Partly Sunny W/ T-Storms" "Rain")
 windy=("Windy")
 cold=("Flurries" "Mostly Cloudy w/ Flurries" "Partly Sunny w/ Flurries" "Snow" "Mostly Cloudy w/ Snow" "Ice" "Sleet" "Freezing Rain" "Rain and Snow" "Cold")
 

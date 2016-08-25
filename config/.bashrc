@@ -94,8 +94,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-EDITOR=nano
-
-alias neofetch='neofetch --ascii_distro arch'
+EDITOR=vim
 
 neofetch
