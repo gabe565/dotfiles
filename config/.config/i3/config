@@ -213,7 +213,7 @@ bindsym XF86AudioNext exec --no-startup-id playerctl next
 bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Screen Brightness contols
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/backlight "-A 5"
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/backlight "-U 5"
+bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/backlight "-A"
+bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/backlight "-U"
 
 exec --no-startup-id xrandr --output $(xrandr | grep " connected" | sed -e "s/\([A-Z0-9]\+\) connected.*/\1/") --primary

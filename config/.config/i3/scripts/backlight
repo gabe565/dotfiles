@@ -1,6 +1,21 @@
 #!/bin/bash
 
-light $1
-backlight_msg=" Backlight: $(printf "%.0f" $(light | bc))%"
+amount=
+percent=$(printf "%.0f" $(light))
+if [[ "$percent" -le 1 ]]; then
+    amount=0.5
+elif [[ "$percent" -le 5 ]]; then
+    amount=1
+elif [[ "$percent" -le 10 ]] && [[ "$1" == "-U" ]]; then
+    amount=2
+elif [[ "$percent" -lt 10 ]]; then
+    amount=2
+else
+    amount=5
+fi
+
+light $1 $amount
+backlight_msg=" Backlight: $(printf "%.0f" $(light))%"
+echo $backlight_msg
 dunstify -p "$backlight_msg" -r 50 &
 
