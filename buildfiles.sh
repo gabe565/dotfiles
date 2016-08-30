@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # vim:fdm=marker
 #
+# gabe565 dotfiles build script
 # https://github.com/gabe565/dotfiles
 
 # Variables {{{
