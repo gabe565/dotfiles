@@ -169,29 +169,29 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     height 25
-	tray_output primary
-	tray_padding 3px
-	position top
-	font pango:RobotoCondensed, FontAwesome, Icons 11
-	status_command i3blocks
-	colors {
+    tray_output primary
+    tray_padding 3px
+    position top
+    font pango:RobotoCondensed, FontAwesome, Icons 11
+    status_command i3blocks
+    colors {
 
-#       setting			outline	bg	text
+#       setting         outline bg  text
 
-        statusline		#999999
-        background		#131D24
+        statusline      #999999
+        background      #131D24
 
-        focused_workspace	#232D34	#232D34	#93AE03
-        active_workspace	#232D34	#232D34	#999999
-        inactive_workspace	#131D24	#131D24	#999999
-        urgent_workspace	#999999	#999999	#B33A3A
-	}
+        focused_workspace   #232D34 #232D34 #93AE03
+        active_workspace    #232D34 #232D34 #999999
+        inactive_workspace  #131D24 #131D24 #999999
+        urgent_workspace    #999999 #999999 #B33A3A
+    }
 }
 
-client.focused				#9fbc00 #3d80ff #111111
-client.unfocused			#505E00 #41557c #cccccc
-client.focused_inactive			#315858 #315858 #cccccc
-client.urgent				#383a3b #383a3b #cccccc
+client.focused              #9fbc00 #3d80ff #111111
+client.unfocused            #505E00 #41557c #cccccc
+client.focused_inactive         #315858 #315858 #cccccc
+client.urgent               #383a3b #383a3b #cccccc
 
 # change volume or toggle mute
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+10 i3blocks 
