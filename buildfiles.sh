@@ -1,18 +1,17 @@
-#!/bin/bash
-############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in the current
-# directory
-############################
+#!/usr/bin/env bash
+# vim:fdm=marker
 
-########## Variables
+# Variables {{{
 
 dir=$(dirname "$(readlink -f "$0")")        # dotfiles directory
-echo "Changing directory to $dir"
 cd "$dir"
 files=$(find config/ -type f)            # list of files to deal with 
 hostname="$HOSTNAME"
 IFS=$'\n'
+
+# }}}
+
+# Build File {{{
 
 function buildFile() {
     relative=$1
@@ -38,7 +37,7 @@ function buildFile() {
             fi
         done
         mkdir -p $(dirname "$HOME/file")
-	cp "$tmp" ~/"$file"
+    cp "$tmp" ~/"$file"
         rm "$tmp"
     else
         echo "Copied File: ~/$file"
@@ -47,13 +46,14 @@ function buildFile() {
     fi
 }
 
+# }}}
+
 for file_full in $files; do
     buildFile "$file_full"
 done
 
 
-prompt="
-Reload configs? [y/N] "
+prompt=$'\n'"Reload configs? [y/N] "
 read $reload -n 1 -p "$prompt" reload
 if [ "$reload" == y ] || [ "$reload" == Y ]; then
     fc-cache -f&
