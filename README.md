@@ -1,7 +1,7 @@
 # dotfiles
 My personal dotfile setup
 
-##Dependencies
+## Dependencies
  * [arc-theme](https://github.com/horst3180/arc-theme)
  * [compton](https://github.com/chjj/compton)
  * [crayolo](https://github.com/dkeg/crayolo)
@@ -17,9 +17,9 @@ My personal dotfile setup
  * urxvt
  * [vim-airline](https://github.com/vim-airline/vim-airline)
 
-##Setup
-####General Files
-the buildscript will automatically copy all of the files in `config/...` to `~/...`
-####Overrides
+## Setup
+#### General Files
+The buildscript will automatically copy all of the files in `config/...` to `~/...`
+#### Overrides
 If there is no matching override for a given file under `override/$HOSTNAME`, the file will just be copied out.
 Otherwise, the override will be inserted, replaced, or appended (whatever command you tell it to use) to the config file.
